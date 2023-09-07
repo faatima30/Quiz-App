@@ -1,38 +1,51 @@
 const questions = [
   {
-    question: "Which is the largest animal in the wolrd?",
+    question:
+      "Which of the following is not a primitive data type in JavaScript?",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "String", correct: false },
+      { text: "Object", correct: true },
+      { text: "Boolean", correct: false },
+      { text: "Number", correct: false },
     ],
   },
   {
-    question: "Which is the smallest country in the wolrd?",
+    question:
+      "Which of the following is the correct way to get the value of an element's property in JavaScript?",
     answers: [
-      { text: "Vatican city", correct: true },
-      { text: "Bhutan", correct: false },
-      { text: "Nepal", correct: false },
-      { text: "Somalia", correct: false },
+      { text: "document.getElementById('elementId').value", correct: true },
+      {
+        text: "document.getElementById('elementId').getPropertyValue('value')",
+        correct: false,
+      },
+      {
+        text: "document.getElementById('elementId').getAttribute('value')",
+        correct: false,
+      },
+      {
+        text: "document.getElementById('elementId').property('value')",
+        correct: false,
+      },
     ],
   },
   {
-    question: "Which is the largest desert in the wolrd?",
+    question:
+      "Which of the following is the correct syntax to create a function in JavaScript?",
     answers: [
-      { text: "Kalahari", correct: false },
-      { text: "Gobi", correct: false },
-      { text: "Sahara", correct: false },
-      { text: "Antarctica", correct: true },
+      { text: "var myFunction = function() => { }", correct: false },
+      { text: "var myFunction = new function() { }", correct: false },
+      { text: "var myFunction = function() { }", correct: false },
+      { text: "function myFunction() { }", correct: true },
     ],
   },
   {
-    question: "Which is the smallest continent in the wolrd?",
+    question:
+      "Which of the following is the correct syntax to call a function in JavaScript?",
     answers: [
-      { text: "Asia", correct: false },
-      { text: "Astralia", correct: true },
-      { text: "Arctic", correct: false },
-      { text: "Africa", correct: false },
+      { text: "var myFunction = function() { }", correct: false },
+      { text: "myFunction()", correct: true },
+      { text: "new myFunction()", correct: false },
+      { text: "() => { }", correct: false },
     ],
   },
 ];
@@ -90,26 +103,26 @@ function SelectAnswer(e) {
   });
   nextBtn.style.display = "block";
 }
-function showScore(){
-    resetState();
-    question.innerHTML=`You scored ${Score} out of ${questions.length}!`;
-    nextBtn.innerHTML="play again";
-    nextBtn.style.display="block";
+function showScore() {
+  resetState();
+  question.innerHTML = `You scored ${Score} out of ${questions.length}!`;
+  nextBtn.innerHTML = "play again";
+  nextBtn.style.display = "block";
 }
-function handleNextbtn(){
-    currentQuestionIndex++;
-    if(currentQuestionIndex<questions.length){
-        showQuestion();
-    }else{
-        showScore();
-    }
+function handleNextbtn() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
 }
-nextBtn.addEventListener("click", ()=>{
-    if(currentQuestionIndex<questions.length){
-        handleNextbtn();
-    }else{
-        startQuiz();
-    }
-})
+nextBtn.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextbtn();
+  } else {
+    startQuiz();
+  }
+});
 
 startQuiz();
